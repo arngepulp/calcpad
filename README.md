@@ -19,3 +19,14 @@ eval all, y = 4
 x = -1
 evall all, y = 0
 bc y is being stored as x = 1, and whenever evaled it checks for a definition of x in context dict
+
+Main plans:
+add support for pycalor, solving and other tools
+add gui
+
+want to add something like
+1: m = 145
+2: g = 9.81
+3: 3mg + 2*3/sqrt(10)Fb = 0 # solve(Fb) #
+(# indiciates function to be applied on line, and will edit 3 to be), 2nd # confirms end of input
+3: Fb = -3mg/(sqrt10 / 6)
