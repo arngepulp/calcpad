@@ -2,9 +2,15 @@ import sys
 import sympy as sp
 from PyQt6.QtWidgets import (
     QApplication, QWidget, QVBoxLayout, QPushButton,
-    QTableWidget, QTableWidgetItem
+    QTableWidget, QTableWidgetItem, QLabel
 )
 from PyQt6.QtCore import Qt
+from sympy import sympify
+from PyQt6.QtGui import QPixmap
+from io import BytesIO
+
+from latex2img import latex2img
+from str2latex import str2latex
 
 
 class calcTable(QWidget):
@@ -16,6 +22,16 @@ class calcTable(QWidget):
         self.table = QTableWidget(0, 3)  # 0 rows, 3 columns
         self.table.setHorizontalHeaderLabels(["Edit Field", "Symbolic", "Value"])
         layout.addWidget(self.table)
+        colwidth = 150
+        rowheight = 200
+        self.table.setColumnWidth(0, colwidth)  
+        self.table.setColumnWidth(1, colwidth)  
+        self.table.setColumnWidth(2, colwidth)
+        # i coulda just for looped...
+        self.table.setRowHeight(0, rowheight)  
+        self.table.setRowHeight(1, rowheight)  
+        self.table.setRowHeight(2, rowheight)  
+
 
         # the button to add rows
         add_row_btn = QPushButton("Add Row")
@@ -53,21 +69,28 @@ class calcTable(QWidget):
         # basicallly check if first col
         if col != 0:
             return
+        try:
+            expr = str2latex(item.text())
+        except:
+            expr = None
+        # the cool display part hehe
+        pixmap = latex2img(expr) if expr else latex2img("error")
+        pixmap = pixmap.scaled(
+        self.table.columnWidth(col),
+        self.table.rowHeight(row),
+        Qt.AspectRatioMode.KeepAspectRatio,
+        Qt.TransformationMode.SmoothTransformation
+        )
 
-        input_text = item.text()
-        # makaes the cool math
-        symbolic_item = self.table.item(row, 1)
-        if symbolic_item is None:
-            symbolic_item = QTableWidgetItem()
-            symbolic_item.setFlags(Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsEnabled)
-            self.table.setItem(row, 1, symbolic_item)
 
-        # im gonna be real i had an issue and chatgpt said to add this
+        # the label to import!!!
+        label = QLabel()
+        label.setPixmap(pixmap)
+        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        # Prevent signal recursion if needed
         self.table.blockSignals(True)
-        # have my actual text filtering in here, probably some library for this
-        expr = input_text
-        
-        symbolic_item.setText(sp.latex(expr))
+        self.table.setCellWidget(row, 1, label)
         self.table.blockSignals(False)
 
         

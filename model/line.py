@@ -9,7 +9,7 @@ class Line:
 
     def eval_line(self, context):
         # only parsed when called
-        if '=' in self.raw_line:
+        if '=' in self.raw_line: # maybe declare line parse as another function bc i gonna use this
             self.var, right = self.raw_line.split('=', 1) # i dont like right variable but idk what else
             self.var = self.var.strip()
             self.expr = parse_expr(right.strip())
