@@ -45,6 +45,8 @@ class calcTable(QWidget):
         self.table.itemChanged.connect(self.on_item_changed) # this guy checks if thing changed
 
     def add_row(self):
+        self.table.blockSignals(True)
+
         row_pos = self.table.rowCount()
         self.table.insertRow(row_pos)
 
@@ -65,6 +67,7 @@ class calcTable(QWidget):
 
         # call to control, note line is empty when added
         c.add_line()
+        self.table.blockSignals(False)
 
     def on_item_changed(self, item): # later gonna eval with model for third col
        
@@ -100,8 +103,23 @@ class calcTable(QWidget):
         self.table.blockSignals(True)
         self.table.setCellWidget(row, 1, label)
         self.table.blockSignals(False)
+        ''
     # evaluating with control
-        #c.item_changed(row,item)
+        #values = c.item_changed(row,expr) # expr is the latek expression
+        expr_val_dict, lines = c.item_changed(row,item.text())
+        values = list(expr_val_dict.values())
+        exprs = list(expr_val_dict.keys())
+        #print('values:')
+        #print(values)
+        self.table.blockSignals(True)
+        for r in range(self.table.rowCount()):
+            self.table.setItem(r, 2, QTableWidgetItem(str(values[r])))
+            self.table.setItem(r, 0, QTableWidgetItem(str(lines[r].raw_line))) # this is not line i figure out later
+        self.table.blockSignals(False)
+
+        
+        
+
 
         
 

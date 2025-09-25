@@ -13,7 +13,7 @@ class Line:
             self.var, right = self.raw_line.split('=', 1) # i dont like right variable but idk what else
             self.var = self.var.strip()
             self.expr = parse_expr(right.strip())
-        if not self.raw_line.strip():  # so doesnt crash when create empty line
+        elif not self.raw_line.strip():  # so doesnt crash when create empty line
             self.expr = None
             return None  
         else:

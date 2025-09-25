@@ -12,8 +12,18 @@ class Controller:
 
     def item_changed(self,idx,new_val):
         # this is gonna update the changed value to a line and then eval all
-        # convert the str to sympy usuable
-        # edit line
-        s.edit_line
-        # update gui
+        # new val is str (i tried latek too hard :(()
+        if not '#' in new_val:
+            if not new_val:
+                new_val = ''
+            self.s.edit_line(str(new_val),idx)
+        else:
+            expr, cmd = new_val.split('#')
+            expr, cmd = expr.strip(), cmd.strip()
+            if 'solve' in cmd:
+                cmd = cmd.replace('solve', '').strip()
+                self.s.solve_sym(idx,cmd)
+
+        results = self.s.eval_all()
+        return results, self.s.get_lines()
 

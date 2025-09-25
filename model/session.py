@@ -24,15 +24,18 @@ class Session:
     def edit_line(self, raw, idx): # replaces line basically, fake edit but should make more sense in gui
         self.lines[idx] = Line(raw)
         self.rebuild_context()
-        self.eval_all()
+        return self.eval_all()
+
+    def get_lines(self):
+        return self.lines
 
 # line operation objects
     def eval_all(self): # prob gonna make a line specific eval function but idk if needed
         results = {}
         for line in self.lines:
             val = line.eval_line(self.context)
-            if line.var:
-                results[line.var] = val
+            #if line.var:
+            results[line.var] = val
             print(f"> {line.raw_line} = {val}")
         return results
     
