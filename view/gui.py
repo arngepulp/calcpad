@@ -9,8 +9,12 @@ from sympy import sympify
 from PyQt6.QtGui import QPixmap
 from io import BytesIO
 
-from latex2img import latex2img
-from str2latex import str2latex
+from view.latex2img import latex2img
+from view.str2latex import str2latex
+
+from controller.controller import Controller
+
+c = Controller()
 
 
 class calcTable(QWidget):
@@ -59,13 +63,17 @@ class calcTable(QWidget):
         item3.setFlags(Qt.ItemFlag.ItemIsSelectable | Qt.ItemFlag.ItemIsEnabled)
         self.table.setItem(row_pos, 2, item3)
 
+        # call to control, note line is empty when added
+        c.add_line()
+
     def on_item_changed(self, item): # later gonna eval with model for third col
+       
         if item is None:
             return
 
         row = item.row()
         col = item.column()
-
+    # math text in  collumns 
         # basicallly check if first col
         if col != 0:
             return
@@ -92,6 +100,8 @@ class calcTable(QWidget):
         self.table.blockSignals(True)
         self.table.setCellWidget(row, 1, label)
         self.table.blockSignals(False)
+    # evaluating with control
+        #c.item_changed(row,item)
 
         
 

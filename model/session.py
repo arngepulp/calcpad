@@ -1,4 +1,4 @@
-from line import Line
+from model.line import Line
 from sympy import symbols, Eq, solve
 from sympy.parsing.sympy_parser import parse_expr
 
