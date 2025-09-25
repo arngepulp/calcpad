@@ -1,5 +1,6 @@
 # line.py
 from sympy.parsing.sympy_parser import parse_expr
+from pyCalor import thermo as th
 
 class Line:
     def __init__(self, raw_line):
@@ -8,25 +9,56 @@ class Line:
         self.expr = None  # symbolic expression
 
     def eval_line(self, context):
-        # only parsed when called
-        if '=' in self.raw_line: # maybe declare line parse as another function bc i gonna use this
-            self.var, right = self.raw_line.split('=', 1) # i dont like right variable but idk what else
-            self.var = self.var.strip()
-            self.expr = parse_expr(right.strip())
-        elif not self.raw_line.strip():  # so doesnt crash when create empty line
+        if not self.raw_line:
             self.expr = None
-            return None  
+            return None
+
+        if '=' in self.raw_line:
+            lhs, rhs = self.raw_line.split('=', 1)
+            self.var = lhs.strip()
+            expr_str = rhs.strip()
         else:
             self.var = None
-            self.expr = parse_expr(self.raw_line)
+            expr_str = self.raw_line.strip()
 
-        # allows for symbolic substitution like desmos
-        substituted = self.expr.subs(context)
-        value = substituted.evalf()
+        # Heuristic: if expr_str refers to state or uses “.” (attribute) or “th.state”, use eval
+        use_eval = False
+        if "th.state" in expr_str or "." in expr_str:
+            # But be careful: sympy expressions may also use ".", e.g. “x**2”. However “.” usually means attribute access
+            use_eval = True
 
-        # symbolic assignment, so if y=2x+3, the value isnt stored, so if x is changed will update!
-        if self.var:
+        if use_eval:
+            # Build a safe environment
+            local_env = {}
+            # allow access to pyCalor, and existing variables in context
+            local_env["th"] = th
+            # Also inject any Python values from context (only ones that are not sympy Expr objects)
+            for k, v in context.items():
+                # If v is a sympy expression, it may not function well in pure Python eval
+                # We could convert to float if numeric, or leave as is
+                local_env[k] = v
+
+            try:
+                value = eval(expr_str, {"__builtins__": {}}, local_env)
+                self.expr = value
+            except Exception as e:
+                print(f"Error evaluating Python line `{expr_str}`: {e}")
+                self.expr = None
+                value = None
+        else:
+            # Use sympy
+            try:
+                self.expr = parse_expr(expr_str)
+                substituted = self.expr.subs(context)
+                value = substituted.evalf()
+            except Exception as e:
+                print(f"Error parsing sympy line `{expr_str}`: {e}")
+                self.expr = None
+                value = None
+
+        if self.var is not None:
             context[self.var] = self.expr
+
         return value
 
     def __repr__(self):

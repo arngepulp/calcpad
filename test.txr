@@ -1,0 +1,3 @@
+Line('x = 1')
+Line('y = x + 1')
+Line('')

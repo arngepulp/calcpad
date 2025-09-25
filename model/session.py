@@ -29,6 +29,25 @@ class Session:
     def get_lines(self):
         return self.lines
 
+    def write_lines(self,name,):
+        with open(name, 'w') as f:
+            for line in self.lines:
+                f.write(f"{line.raw_line}\n")
+
+    def read_lines(self, path):
+        with open(path) as f:
+            line_file = f.read().splitlines()
+        
+        # Convert each raw line string into a Line object
+        self.lines = [Line(raw_line) for raw_line in line_file]
+
+        print(line_file)
+        self.rebuild_context()
+        self.eval_all()
+
+
+
+
 # line operation objects
     def eval_all(self): # prob gonna make a line specific eval function but idk if needed
         results = {}
@@ -55,3 +74,14 @@ class Session:
         sol = f"{var}="+sol
         self.lines[idx] = Line(sol)
         self.rebuild_context()
+    '''
+    def diff(self,idx):
+        line = self.lines[idx]
+        left, right = line.raw_line.split('=')
+        dx = diff
+    '''
+    '''
+    def calor(self):
+        # somehow implement pycalor??
+        y = calor()
+        '''

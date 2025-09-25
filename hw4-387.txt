@@ -1,0 +1,14 @@
+T_1 = 25.00
+P_1 = 105.00
+m_N = 20 / 1000.
+k = 0.50
+d = 15 * 10**-2.00
+st1 = th.state('nitrogen', t=(T_1, 'C'), p=P_1)
+v_1 = st1.v
+v_2 = v_1 * 1.10
+A = d**2 * 3.141 / 4.0
+P_2 = k * v_1 * m_N / (10.0 * A**2)
+st2 = th.state('nitrogen', p=P_2, v=v_2)
+y = st2.u -st1.u
+x = st2.h-st1.h
+

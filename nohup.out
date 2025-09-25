@@ -1,0 +1,175 @@
+>  = None
+Error parsing sympy line ``: invalid syntax (<string>, line 0)
+> m = = None
+Error parsing sympy line ``: invalid syntax (<string>, line 0)
+> m = = None
+> m_N = 20*10^-3 = -203.000000000000
+> m_N = 20*10^-3 = -203.000000000000
+> m_N = 20*10**-3 = 0.0200000000000000
+> m_N = 20*10**-3 = 0.0200000000000000
+> m_N = 20*10**-3 = 0.0200000000000000
+>  = None
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+>  = None
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+>  = None
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+> P_1 = 105 = 105.000000000000
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+> P_1 = 105 = 105.000000000000
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+> P_1 = 105 = 105.000000000000
+>  = None
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+> P_1 = 105 = 105.000000000000
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = 
+        nitrogen: gas   
+        molar mass: 28.013  (kg/kmol)
+        R: 0.297  (kJ/kg K)
+        T: 298.16  (K)
+        p: 105.0  (kPa)
+        v: 0.8426  (m3/kg)
+        u: 220.8  (kJ/kg)
+        h: 309.3  (kJ/kg)
+        s: 6.8247  (kJ/kg K)
+Error parsing sympy line `20*10**-3`: SympifyError: <pyCalor.thermo.state object at 0x7f6ca0588980>
+> m_N = 20*10**-3 = None
+> k = 0.5 = 0.5
+Error parsing sympy line `25`: SympifyError: None
+> T_1 = 25 = None
+Error parsing sympy line `105`: SympifyError: None
+> P_1 = 105 = None
+Error evaluating Python line `th.state('nitrogen',t=(T_1,'C'),p=P_1)`: unsupported operand type(s) for -: 'NoneType' and 'float'
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = None
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+> P_1 = 105 = 105.000000000000
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = 
+        nitrogen: gas   
+        molar mass: 28.013  (kg/kmol)
+        R: 0.297  (kJ/kg K)
+        T: 298.16  (K)
+        p: 105.0  (kPa)
+        v: 0.8426  (m3/kg)
+        u: 220.8  (kJ/kg)
+        h: 309.3  (kJ/kg)
+        s: 6.8247  (kJ/kg K)
+>  = None
+Error parsing sympy line `20*10**-3`: SympifyError: <pyCalor.thermo.state object at 0x7f6ca031cb90>
+> m_N = 20*10**-3 = None
+> k = 0.5 = 0.5
+Error parsing sympy line `25`: SympifyError: None
+> T_1 = 25 = None
+Error parsing sympy line `105`: SympifyError: None
+> P_1 = 105 = None
+Error evaluating Python line `th.state('nitrogen',t=(T_1,'C'),p=P_1)`: unsupported operand type(s) for -: 'NoneType' and 'float'
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = None
+Error evaluating Python line `st1.v`: 'NoneType' object has no attribute 'v'
+> v_2 = st1.v = None
+Error parsing sympy line `20*10**-3`: SympifyError: None
+> m_N = 20*10**-3 = None
+> k = 0.5 = 0.5
+Error parsing sympy line `25`: SympifyError: None
+> T_1 = 25 = None
+Error parsing sympy line `105`: SympifyError: None
+> P_1 = 105 = None
+Error evaluating Python line `th.state('nitrogen',t=(T_1,'C'),p=P_1)`: unsupported operand type(s) for -: 'NoneType' and 'float'
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = None
+Error evaluating Python line `st1.v`: 'NoneType' object has no attribute 'v'
+> v_2 = st1.v = None
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+> P_1 = 105 = 105.000000000000
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = 
+        nitrogen: gas   
+        molar mass: 28.013  (kg/kmol)
+        R: 0.297  (kJ/kg K)
+        T: 298.16  (K)
+        p: 105.0  (kPa)
+        v: 0.8426  (m3/kg)
+        u: 220.8  (kJ/kg)
+        h: 309.3  (kJ/kg)
+        s: 6.8247  (kJ/kg K)
+> st1.v = 0.8426368873012728
+Error parsing sympy line `20*10**-3`: SympifyError: <pyCalor.thermo.state object at 0x7f6ca044deb0>
+> m_N = 20*10**-3 = None
+> k = 0.5 = 0.5
+Error parsing sympy line `25`: SympifyError: None
+> T_1 = 25 = None
+Error parsing sympy line `105`: SympifyError: None
+> P_1 = 105 = None
+Error evaluating Python line `th.state('nitrogen',t=(T_1,'C'),p=P_1)`: unsupported operand type(s) for -: 'NoneType' and 'float'
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = None
+Error evaluating Python line `st1.v`: 'NoneType' object has no attribute 'v'
+> st1.v = None
+> m_N = 20*10**-3 = 0.0200000000000000
+> k = 0.5 = 0.5
+> T_1 = 25 = 25.0000000000000
+> P_1 = 105 = 105.000000000000
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = 
+        nitrogen: gas   
+        molar mass: 28.013  (kg/kmol)
+        R: 0.297  (kJ/kg K)
+        T: 298.16  (K)
+        p: 105.0  (kPa)
+        v: 0.8426  (m3/kg)
+        u: 220.8  (kJ/kg)
+        h: 309.3  (kJ/kg)
+        s: 6.8247  (kJ/kg K)
+> st1.h = 309.26913535368016
+Error parsing sympy line `20*10**-3`: SympifyError: <pyCalor.thermo.state object at 0x7f6ca0274d10>
+> m_N = 20*10**-3 = None
+> k = 0.5 = 0.5
+Error parsing sympy line `25`: SympifyError: None
+> T_1 = 25 = None
+Error parsing sympy line `105`: SympifyError: None
+> P_1 = 105 = None
+Error evaluating Python line `th.state('nitrogen',t=(T_1,'C'),p=P_1)`: unsupported operand type(s) for -: 'NoneType' and 'float'
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = None
+Error evaluating Python line `st1.h`: 'NoneType' object has no attribute 'h'
+> st1.h = None
+Error parsing sympy line `20*10**-3`: SympifyError: None
+> m_N = 20*10**-3 = None
+> k = 0.5 = 0.5
+Error parsing sympy line `25`: SympifyError: None
+> T_1 = 25 = None
+Error parsing sympy line `105`: SympifyError: None
+> P_1 = 105 = None
+Error evaluating Python line `th.state('nitrogen',t=(T_1,'C'),p=P_1)`: unsupported operand type(s) for -: 'NoneType' and 'float'
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = None
+Error evaluating Python line `st1.h`: 'NoneType' object has no attribute 'h'
+> st1.h = None
+Error parsing sympy line `20*10**-3`: SympifyError: None
+> m_N = 20*10**-3 = None
+> k = 0.5 = 0.5
+Error parsing sympy line `25`: SympifyError: None
+> T_1 = 25 = None
+Error parsing sympy line `105`: SympifyError: None
+> P_1 = 105 = None
+Error evaluating Python line `th.state('nitrogen',t=(T_1,'C'),p=P_1)`: unsupported operand type(s) for -: 'NoneType' and 'float'
+> st1 = th.state('nitrogen',t=(T_1,'C'),p=P_1) = None
+Error evaluating Python line `st1.h`: 'NoneType' object has no attribute 'h'
+> st1.h = None

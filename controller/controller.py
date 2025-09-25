@@ -23,6 +23,12 @@ class Controller:
             if 'solve' in cmd:
                 cmd = cmd.replace('solve', '').strip()
                 self.s.solve_sym(idx,cmd)
+            if 'write' in cmd:
+                cmd = cmd.replace('write','').strip()
+                self.s.write_lines(cmd)
+            if 'read' in cmd:
+                cmd = cmd.replace('read','').strip()
+                self.s.read_lines(cmd)
 
         results = self.s.eval_all()
         return results, self.s.get_lines()
